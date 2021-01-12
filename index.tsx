@@ -23,28 +23,26 @@ export function useMeasure(ref: RefObject<HTMLElement | null>) {
     left: 0,
   });
 
+  // @ts-ignore
   useLayoutEffect(() => {
-    if (ref.current === null) {
-      return;
-    }
-
-    let animationFrameId: number | null = null;
-    const measure: ResizeObserverCallback = ([entry]) => {
-      animationFrameId = window.requestAnimationFrame(() => {
-        setContentRect(entry.contentRect);
-      });
-    };
-
-    const ro = new ResizeObserver(measure);
     if (ref.current) {
-      ro.observe(ref.current);
-    }
+      let animationFrameId: number | null = null;
+      const measure: ResizeObserverCallback = ([entry]) => {
+        animationFrameId = window.requestAnimationFrame(() => {
+          setContentRect(entry.contentRect);
+        });
+      };
 
-    // @ts-ignore
-    return () => {
-      window.cancelAnimationFrame(animationFrameId!);
-      ro.disconnect();
-    };
+      const ro = new ResizeObserver(measure);
+      if (ref.current) {
+        ro.observe(ref.current);
+      }
+
+      return function () {
+        window.cancelAnimationFrame(animationFrameId!);
+        ro.disconnect();
+      };
+    }
   }, []);
 
   return bounds;
