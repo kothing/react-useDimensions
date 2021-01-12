@@ -40,6 +40,7 @@ export function useMeasure(ref: RefObject<HTMLElement | null>) {
       ro.observe(ref.current);
     }
 
+    // @ts-ignore
     return () => {
       window.cancelAnimationFrame(animationFrameId!);
       ro.disconnect();
