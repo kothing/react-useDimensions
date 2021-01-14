@@ -11,6 +11,6 @@ export interface Dimensions {
 
 export type UseDimensionsHook = [
   (node: HTMLElement) => void,
-  {} | Dimensions,
-  HTMLElement
+  Dimensions | {},
+  HTMLElement | null
 ];
