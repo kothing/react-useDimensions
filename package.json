@@ -1,0 +1,30 @@
+{
+  "name": "react-use-dimensions",
+  "version": "1.0.0",
+  "description": "Measure React elements live using hooks ",
+  "main": "dist/index.js",
+  "scripts": {
+    "prepublish": "tsc"
+  },
+  "types": "dist/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kothing/react-useDimensions.git"
+  },
+  "author": "Kothing",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kothing/react-useDimensions/issues"
+  },
+  "homepage": "https://github.com/kothing/react-useDimensions#readme",
+  "dependencies": {
+    "resize-observer-polyfill": "^1.5.1"
+  },
+  "devDependencies": {
+    "@types/react": "^17.0.0",
+    "typescript": "^4.1.3"
+  },
+  "peerDependencies": {
+    "react": "^17.0.0"
+  }
+}
